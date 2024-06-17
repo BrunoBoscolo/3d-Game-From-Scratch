@@ -1,0 +1,23 @@
+def process_obj_file(input_file, output_file):
+    vertices = []
+    faces = []
+    
+    with open(input_file, 'r') as file:
+        for line in file:
+            if line.startswith('usemtl '):
+                faces.append(line)
+            if line.startswith('v '):
+                vertices.append(line)
+            elif line.startswith('f '):
+                faces.append(line)
+    
+    with open(output_file, 'w') as file:
+        for vertex in vertices:
+            file.write(vertex)
+        for face in faces:
+            file.write(face)
+
+if __name__ == "__main__":
+    input_file = 'objects/missile.obj'
+    output_file = 'objects/missile.obj'
+    process_obj_file(input_file, output_file)
