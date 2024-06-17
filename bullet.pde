@@ -10,7 +10,7 @@ public class bullet {
   
   public bullet(float x, float y, float z, boolean foward, mesh origin) {
     this.mesh = new mesh();
-    this.mesh.loadObjectFile("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/missile.obj", "");
+    this.mesh.loadObjectFile(filepath+"objects/missile.obj", "");
     this.objectOrigin = origin;
     this.x = 50*size;
     this.y = 50*size;

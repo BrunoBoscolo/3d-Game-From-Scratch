@@ -23,6 +23,8 @@ mat4x4 identityMatrix = new mat4x4();
 enemy enemy = createEnemy();
 enemy textEnemy = createEnemy();
 
+String filepath = "E:/3d-game-engine-from-scratch-main/game_engine_3d/";
+
 PImage background;
 
 PVector camera = new PVector(0,0,0);

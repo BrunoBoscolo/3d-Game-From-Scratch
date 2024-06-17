@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 void setup(){
   size(1280,800);
-  background = loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/background.png");
+  background = loadImage(filepath+"objects/background.png");
   // Projection matrix parameters;
   float near = 0.1f;
   float far = 1000.0f;
@@ -20,30 +20,30 @@ void setup(){
   projectionMatrix.set(2,3,1.0f);
   projectionMatrix.set(3,3,0.0f);
   
-  String filename = "C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/title.obj";
-  boolean success = titleMesh.loadObjectFile(filename, "C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/arwingMaterials/");
+  String filename = filepath+"fonts/title.obj";
+  boolean success = titleMesh.loadObjectFile(filename, filepath+"objects/arwingMaterials/");
   if (success) {
       println("Object file loaded successfully.");
   } else {
       println("Failed to load object file: " + filename);
   }
   
-  titleFont = createFont("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/Arwing.ttf", 64);
-  speakFont = createFont("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/all-aircraft-report.ttf", 32);
-  speakFont8 = createFont("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/all-aircraft-report.ttf", 16);
-  speakFont64 = createFont("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/all-aircraft-report.ttf", 64);
-  speakFont128 = createFont("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/fonts/all-aircraft-report.ttf", 128);
+  titleFont = createFont(filepath+"fonts/Arwing.ttf", 64);
+  speakFont = createFont(filepath+"fonts/all-aircraft-report.ttf", 32);
+  speakFont8 = createFont(filepath+"fonts/all-aircraft-report.ttf", 16);
+  speakFont64 = createFont(filepath+"fonts/all-aircraft-report.ttf", 64);
+  speakFont128 = createFont(filepath+"fonts/all-aircraft-report.ttf", 128);
   
-  laser = new SoundFile(this,"C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sounds/laser.mp3");
-  menuMusic = new SoundFile(this,"C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sounds/menuMusic.mp3");
-  gameStart = new SoundFile(this,"C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sounds/gameStart.mp3");
-  hitting = new SoundFile(this,"C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sounds/hitting.mp3");
-  playMusic = new SoundFile(this,"C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sounds/gameMusic.mp3");
+  laser = new SoundFile(this,filepath+"sounds/laser.mp3");
+  menuMusic = new SoundFile(this,filepath+"sounds/menuMusic.mp3");
+  gameStart = new SoundFile(this,filepath+"sounds/gameStart.mp3");
+  hitting = new SoundFile(this,filepath+"sounds/hitting.mp3");
+  playMusic = new SoundFile(this,filepath+"sounds/gameMusic.mp3");
   
   //Mesh Setup
   
-  filename = "C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/Arwing.obj";
-  success = arwing.loadObjectFile(filename, "C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/arwingMaterials/");
+  filename = filepath+"objects/Arwing.obj";
+  success = arwing.loadObjectFile(filename, filepath+"objects/arwingMaterials/");
   if (success) {
       println("Object file loaded successfully.");
   } else {
@@ -60,7 +60,7 @@ void draw() {
       menuMusic.play();
     }
     background(0);
-    
+    score = 0; 
     xRotationMatrixSetup(txtheta, textRotationMat);
   
     for (triangle t : titleMesh.tris) {
@@ -273,7 +273,7 @@ void draw() {
     fill(155,155,155);
     translate(screenWidth/2,screenHeight*0.50);
     text("supervising professor: Jose Picolo", 0,0 );
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/picollo.png"),0,0);
+    image(loadImage(filepath+"sprites/picollo.png"),0,0);
     popMatrix();
   }
   
@@ -362,29 +362,29 @@ void draw() {
     pushMatrix();
     translate(screenWidth/4,screenHeight*0.20);
     scale(2);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/frame.png"),0,0);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/speedIcon.png"),0,0);
+    image(loadImage(filepath+"sprites/frame.png"),0,0);
+    image(loadImage(filepath+"sprites/speedIcon.png"),0,0);
     popMatrix();
     
     pushMatrix();
     translate(screenWidth/4,screenHeight*0.30);
     scale(2);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/frame.png"),0,0);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/timeIcon.png"),0,0);
+    image(loadImage(filepath+"sprites/frame.png"),0,0);
+    image(loadImage(filepath+"sprites/timeIcon.png"),0,0);
     popMatrix();
     
     pushMatrix();
     translate(screenWidth/4,screenHeight*0.40);
     scale(2);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/frame.png"),0,0);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/bulletIcon.png"),0,0);
+    image(loadImage(filepath+"sprites/frame.png"),0,0);
+    image(loadImage(filepath+"sprites/bulletIcon.png"),0,0);
     popMatrix();
     
     pushMatrix();
     translate(screenWidth/4,screenHeight*0.50);
     scale(2);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/frame.png"),0,0);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/upIcon.png"),0,0);
+    image(loadImage(filepath+"sprites/frame.png"),0,0);
+    image(loadImage(filepath+"sprites/upIcon.png"),0,0);
     popMatrix();
     
     pushMatrix();
@@ -899,7 +899,7 @@ void draw() {
     translate(screenWidth/2,screenHeight*0.90);
     rotate(radians(sA));
     textFont(speakFont);
-    text("back", 0,0 );
+    text("back", 0,0 ); 
     popMatrix();
     
     pushMatrix();
@@ -929,7 +929,7 @@ void draw() {
     
     pushMatrix();
     fill(155,155,155);
-    translate(screenWidth/2,screenHeight*0.70);
+    translate(screenWidth/2,screenHeight*0.30);
     textFont(speakFont64);
     text("Score: "+score, 0,0 );
     popMatrix();
@@ -941,10 +941,38 @@ void draw() {
     textFont(speakFont);
     text("back", 0,0 );
     popMatrix();
-    
-    if (mouseX >= 595 && mouseX <= 684 && mouseY >= 688 && mouseY<= 724) {
-         gameMode = 0; 
+    if (mousePressed && (mouseButton == LEFT)) {
+      if (mouseX >= 595 && mouseX <= 684 && mouseY >= 688 && mouseY<= 724) {
+           gameMode = 0; 
+      }
     }
+    
+    menuEnemyRotation += 0.01;
+    
+    yRotationMatrixSetup(menuEnemyRotation, EmemyTextRotationMatX);
+    xRotationMatrixSetup(3.3, EmemyTextRotationMatY);
+    zRotationMatrixSetup(0, EmemyTextRotationMatZ);
+    
+    enemyScalingHorizontalFactor = (0.5*screenWidth)-10;
+    enemyScalingVerticalFactor = (0.5*screenHeight)-10;
+    
+    ety = 2;
+    for (triangle t : enemy.mesh.tris) {
+     meshTextEnemyProjectionSetup(t, triangles, t.red, t.green, t.blue, 2, textEnemy);
+    }
+    
+    sortTrianglesByMedianZ(triangles);
+    
+    for (triangle t : triangles) {
+      rasterizeTriangle(t);
+      drawTriangleOutline(t);
+    }
+    
+    afterStateTriangles = new ArrayList<>();
+    
+    afterStateEnemy = new ArrayList<>();
+    
+    triangles = new ArrayList<>();
   }
   
   if (gameMode == 1) {   //Playing mode
@@ -977,7 +1005,6 @@ void draw() {
       if (timeIsUp) {
           gameMode=6;
           countdownStarted = false;
-          score = 0;
       }
     }
     
@@ -1130,7 +1157,7 @@ void draw() {
     
     pushMatrix();
     translate(10,screenHeight-50);
-    image(loadImage("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/sprites/bar.png"),0,0);
+    image(loadImage(filepath+"sprites/bar.png"),0,0);
     popMatrix();
     
     pushMatrix();

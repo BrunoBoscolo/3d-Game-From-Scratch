@@ -13,7 +13,7 @@ public class enemy {
 
     public enemy(float x, float y, float z) {
         this.mesh = new mesh();
-        this.mesh.loadObjectFile("C:/Users/bruno/Desktop/3d-game-engine-from-scratch-main/game_engine_3d/objects/enemy.obj", "");
+        this.mesh.loadObjectFile("E:/3d-game-engine-from-scratch-main/game_engine_3d/objects/enemy.obj", "");
         this.x = x;
         this.y = y;
         this.z = z;
